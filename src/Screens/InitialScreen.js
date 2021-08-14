@@ -12,6 +12,8 @@ function InitialScreen(){
   var list = ["All", "Pizza", "Burger", "Taco", "Burrito"]
   const  {state} = useContext(DataState);
 
+  console.log(state)
+
   return(
 
   <div className="flex flex-col h-screen bg-gray-300">

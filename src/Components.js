@@ -25,6 +25,7 @@ export function Card(props){
 
                     <Link to="/cart" onClick={ () =>{
                         setState((pv)=>({
+                            ...pv,
                             name: props.name,
                             price: props.price,
                             caloriesGrs: props.caloriesGrs,
@@ -61,7 +62,7 @@ export function Card(props){
                         setState((pv)=>({
                             ...pv,
                             // cartNumber: pv.cartNumber + 1,
-                            cartList: [{...props}, ...pv.cartList]
+                            cartList: [...pv.cartList, {...props}]
                             
                         }))
                     

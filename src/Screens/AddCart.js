@@ -51,10 +51,10 @@ export default function AddCart(){
                     <div className="h-48 flex flex-row overflow-x-auto space-x-1  items-center px-4">
 
                     {
-                        Toppings.map((vl)=>{
+                        Toppings.map((vl, ix)=>{
 
                         return(
-                        <div>
+                        <div key={ix}>
                         <div className=" relative h-36 w-28 bg-green-400 rounded-md filter drop-shadow-lg flex justify-center ">
                             <h1 className=" absolute bottom-2 text-sm">{vl}</h1>
                         </div>

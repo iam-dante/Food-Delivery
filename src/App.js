@@ -14,7 +14,7 @@ function App(){
     price:"",
     caloriesGrs: "",
     caloriesKal: "",
-    cartNumber: 0,
+    // cartNumber: 0,
     cartList: []
   })
 
@@ -26,11 +26,6 @@ return(
 
   
   <Switch>
-
-    {/* <Route path="/" component={InitialScreen} exact />
-    <Route path="/cardAdd" component={AddCart}/>
-    <Route path="/order" component={OrderScreen}/> */}
-
 
     <DataState.Provider value={{state, setState}}>
         <Route path="/" exact>
