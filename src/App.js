@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState, createContext} from 'react';
+import { Switch, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import InitialScreen from './Screens/InitialScreen'
+import AddCart from './Screens/AddCart'
+import OrderScreen from './Screens/OrderScreen'
+
+export const DataState = createContext()
+
+function App(){
+
+  const [state, setState] = useState({
+    name:"",
+    price:"",
+    caloriesGrs: "",
+    caloriesKal: "",
+    cartNumber: 0,
+    cartList: []
+  })
+
+  // const cartList =[]
+
+
+
+return(
+
+  
+  <Switch>
+
+    {/* <Route path="/" component={InitialScreen} exact />
+    <Route path="/cardAdd" component={AddCart}/>
+    <Route path="/order" component={OrderScreen}/> */}
+
+
+    <DataState.Provider value={{state, setState}}>
+        <Route path="/" exact>
+          <InitialScreen/>
+        </Route>
+
+        <Route path="/cart">
+          <AddCart/>
+        </Route>
+
+        <Route path="/myorder">
+          <OrderScreen/>
+        </Route>
+    </DataState.Provider>
+
+  </Switch>
+  
+  )
+
 }
 
 export default App;
