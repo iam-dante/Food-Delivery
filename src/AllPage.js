@@ -3,6 +3,7 @@ import {Card} from "./Components"
 
 var allList = [
     {
+        id:0,
         name: "Magarita",
         price: 25,
         time: 345,
@@ -12,6 +13,7 @@ var allList = [
     },
 
     {
+        id:1,
         name: "Burrito Chees",
         price: 30,
         time: 390,
@@ -21,6 +23,7 @@ var allList = [
     },
 
     {
+        id:2,
         name: "Taco",
         price: 50,
         time: 380,
@@ -29,14 +32,6 @@ var allList = [
 
     },
 
-    {
-        name: "Taco",
-        price: 50,
-        time: 380,
-        caloriesGrs: 334,
-        caloriesKal: 40930,
-
-    },
 ]
 
 export function AllPage(){
@@ -45,10 +40,10 @@ export function AllPage(){
 
         {
 
-            allList.map((vl) => {
+            allList.map((vl, ix) => {
                 return (
 
-                    <Card name={vl.name} price={vl.price} time={vl.time}  caloriesGrs={vl.caloriesGrs} caloriesKal={vl.caloriesKal}/>
+                    <Card key={ix} id={vl.id} name={vl.name} price={vl.price} time={vl.time}  caloriesGrs={vl.caloriesGrs} caloriesKal={vl.caloriesKal}/>
                 )
 
             })
@@ -56,6 +51,6 @@ export function AllPage(){
         }
             
            
-        </>
+    </>
     )
 }

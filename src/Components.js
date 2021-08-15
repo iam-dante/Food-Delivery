@@ -88,9 +88,9 @@ export function Card(props){
 
 
 
-export function OrderCard(){
+export function OrderCard(props){
     return(
-        <>
+        <div>
         {/* Card in My Order */}
         <div className="h-24  flex flex-row border-b border-gray-300 ">
 
@@ -104,18 +104,18 @@ export function OrderCard(){
 
                 <div className="w-48 flex flex-row items-center justify-around">
 
-                    <h1>1 </h1>
+                    <h1> {props.numOrder}</h1>
                     X
                     <div>
-                        <h1>Margherita</h1>
-                        <h1>$ 24,700</h1>
+                        <h1>{props.name}</h1>
+                        <h1>{props.price}</h1>
                     </div>
-                <TrashIcon className=" absolute right-4 h-6 w-6 text-gray-400"/>
+                <TrashIcon className=" absolute right-4 h-6 w-6 text-gray-400 hover:text-red-700"/>
                 </div>
 
             </div>
          </div>
-    </>
+    </div>
 
     )
 }

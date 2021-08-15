@@ -12,7 +12,7 @@ function InitialScreen(){
   var list = ["All", "Pizza", "Burger", "Taco", "Burrito"]
   const  {state} = useContext(DataState);
 
-  console.log(state)
+  // console.log(state)
 
   return(
 
@@ -38,10 +38,10 @@ function InitialScreen(){
           <div className="h-32  flex flex-row overflow-x-auto space-x-1 px-2">
 
             {
-              list.map((vl)=>{
+              list.map((vl, ix)=>{
 
                 return(
-                <div>
+                <div key={ix}>
                 <Tab  className=" relative h-24 w-20 bg-green-400 mx-2 rounded-md filter drop-shadow-lg">
                   <h1 className=" absolute  inset-x-0 bottom-2 text-sm">{vl}</h1>
                 </Tab> </div>)
