@@ -1,14 +1,13 @@
 import { PlusIcon, MinusIcon, ChevronLeftIcon, CurrencyDollarIcon} from "@heroicons/react/outline"
-import {OrderCard} from '../Components'
+import {OrderCard, findTotal} from '../Components'
 import {Link} from 'react-router-dom'
-import { useContext } from "react"
+import { useContext} from "react"
 import { DataState } from "../App"
 
-export default function OrderScreen(){
-
+ function OrderScreen(){
+    
     const {state} = useContext(DataState)
-
-
+    
     // Making a list of all ID that where selected
     var listID = []
     for(var i = 0; i < state.cartList.length; i++ ){
@@ -21,34 +20,30 @@ export default function OrderScreen(){
         else{
             listID.push(state.cartList[i].id)
         }
-            
+        
     }
-
-
+    
+    
     // Making a list of Id with how much is  appeared
     var count = 0
     const listIdNum =[]
     for(var z = 0; z < listID.length; z++){
     
         for(var j = 0; j < state.cartList.length; j++ ){
-            if(state.cartList[j].id === listID[z] ){
+            if(listID[z] === state.cartList[j].id ){
                 count++
             }  
             else{
                 continue
             }        
         }
-        listIdNum.push({id:z, num:count})
+        listIdNum.push({id:listID[z], num:count})
         count = 0
     }
-
-
-
-
-    // console.log(state.cartList)
-    // // console.log("These are the IDs " + listID)
-    // console.log(listIdNum)
-
+    
+    
+    
+    //Making a new list
     var newList =[]
     for(var k= 0; k < listIdNum.length; k++){
         for(var l=0; l < state.cartList.length; l++){
@@ -62,20 +57,22 @@ export default function OrderScreen(){
         }
     }
 
-    console.log(newList)
 
 
+    // Calculating the total amount used
+    var total = findTotal(newList)
 
-
-
-
+    console.log  (newList)
+    // console.log(state.cartList)
+    // console.log(listIdNum)
+    // console.log(listID)
 
 
     return(
-        <div className=" h-screen bg-gray-100 ">
+        <div className=" h-screen bg-light-grey">
             <div className="bg-green-400 h-auto">
                 <Link to="/">
-                    <ChevronLeftIcon className=" absolute left-4 top-6 h-6 w-6 "/>
+                    <ChevronLeftIcon className="absolute left-4 top-6 h-6 w-6 "/>
                 </Link>
                 <div className=" absolute right-4 top-4 h-10 w-10 bg-yellow-500 rounded-full flex justify-center items-center filter drop-shadow-lg text-xl font-medium z-20 ">{state.cartList.length}</div>
             </div>
@@ -83,41 +80,18 @@ export default function OrderScreen(){
             <div className="h-4/6 overflow-y-auto  pt-16 pl-6">
                 <h1 className="text-3xl ">My Order</h1>
 
-
-                {/* Card in My Order
-                <div className="h-24  flex flex-row border-b border-gray-200 "> */}
-
-                    {/* Pizza Picture */}
-                    {/* <div className="w-36 flex justify-center items-center ">
-                        <div className="h-16 w-16 bg-green-400 rounded-full "></div>
-                    </div>
-
-                
-                    <div className= "h-24  w-full flex items-center ">
-
-                        <div className="w-48 flex flex-row items-center justify-around">
-
-                            <h1>1 </h1>
-                            X
-                            <div>
-                                <h1>Margherita</h1>
-                                <h1>$ 24,700</h1>
-                            </div>
-                        </div>
-
-                        <TrashIcon className=" absolute right-4 h-6 w-6 text-gray-300"/>
-                    </div>
-                </div> */}
-
-
                 {
+
                     newList.map((vl)=>{
                         return(
-                            <OrderCard key={vl.id} name={vl.name}  numOrder={vl.num} price={vl.price}/>
+                           
+                            <OrderCard key={vl.id} name={vl.name}  numOrder={vl.num} price={vl.price} id={vl.id} imageURL={vl.imageURL}/>
+                            
                              // console.log(name)
                         )
 
                     })
+
                 }
                
                 
@@ -138,7 +112,7 @@ export default function OrderScreen(){
                         <div className="relative h-24 flex  items-center ">
 
                             <h1 className="text-3xl font-medium ">Total</h1>
-                            <h1  className="absolute right-4 text-3xl font-medium">$ 24.90 </h1>
+                            <h1  className="absolute right-4 text-3xl font-medium">$ {total} </h1>
                         </div>
 
 
@@ -178,7 +152,7 @@ export default function OrderScreen(){
 
                     {/* Add To Cart Button */}
                     <div className="px-4 mt-12">
-                        <div className="h-12 mt-2 bg-yellow-600 rounded-lg flex justify-center items-center text-xl font-medium">
+                        <div className="h-12 mt-2 bg-dark-blue rounded-lg flex justify-center items-center text-xl font-medium text-white">
                             <CurrencyDollarIcon className="h-6 w-6 mx-2"/>
                             Pay
                         </div>
@@ -190,3 +164,5 @@ export default function OrderScreen(){
     )
 }
 
+
+export default OrderScreen;

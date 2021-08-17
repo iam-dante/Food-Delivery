@@ -7,15 +7,15 @@ import { PlusIcon, ClockIcon, TrashIcon } from "@heroicons/react/outline"
 
 
 export function Card(props){
-
-    const  {  setState,} = useContext(DataState);
-
+    const  { setState,} = useContext(DataState);
 
     return(
         <div className="h-36  flex flex-row border-b-2 border-gray-200 "> 
             
             <div className=" w-36 h-36 flex justify-center items-center">
-                <div className="bg-yellow-200 w-24 h-24 rounded-full "></div>
+                <div className="bg-yellow-200 w-24 h-24 rounded-full " >
+                    <img src={props.imageURL}  className="bg-yellow-200 w-24 h-24 rounded-full" alt=""/>
+                </div>
             </div>
             
 
@@ -27,6 +27,8 @@ export function Card(props){
                         setState((pv)=>({
                             ...pv,
                             name: props.name,
+                            id:props.id,
+                            imageURL: props.imageURL,
                             price: props.price,
                             caloriesGrs: props.caloriesGrs,
                             caloriesKal:props.caloriesKal
@@ -50,7 +52,7 @@ export function Card(props){
                             <h1 className="text-gray-400">{props.caloriesKal} Kal</h1>
                         </div>
 
-                        <div className="bg-gray-200 w-max px-2 rounded-full flex flex-row justify-center text-sm text-gray-700 mt-3"> 
+                        <div className="bg-light-grey w-max px-2 rounded-full flex flex-row justify-center text-sm text-gray-700 mt-3"> 
                             <ClockIcon className="h-5"/>
                             ~ {props.time} ms
                         </div>
@@ -61,7 +63,6 @@ export function Card(props){
                     <PlusIcon className="h-6 w-6" onClick={()=>{
                         setState((pv)=>({
                             ...pv,
-                            // cartNumber: pv.cartNumber + 1,
                             cartList: [...pv.cartList, {...props}]
                             
                         }))
@@ -89,6 +90,47 @@ export function Card(props){
 
 
 export function OrderCard(props){
+    
+    const  {state, setState} = useContext(DataState);
+    
+    
+    var stateCartList = []
+    
+
+    for (var i = 0; i < state.cartList.length; i++) {
+        stateCartList[i] = state.cartList[i];
+      }
+
+
+
+      function removeItemAll(arr, value) {
+        var i = 0;
+        while (i < arr.length) {
+          if (arr[i].id === value) {
+            arr.splice(i, 1);
+          } else {
+            ++i;
+          }
+        }
+        return arr;
+      }
+
+      var newCart = removeItemAll(stateCartList,props.id)
+    //   console.log(newCart)
+    
+    // // console.log(stateCartList)
+    
+    // for (var s = 0; s < stateCartList.length; s++){
+    //     if(stateCartList[s].id === 1){
+    //         console.log(stateCartList.indexOf(stateCartList[1]))
+        
+    //     }
+    //     else{
+    //         continue
+    //     }
+    // }
+    // // console.log( stateCartList)
+
     return(
         <div>
         {/* Card in My Order */}
@@ -96,7 +138,8 @@ export function OrderCard(props){
 
             {/* Pizza Picture */}
             <div className="w-36 flex justify-center items-center ">
-                <div className="h-16 w-16 bg-green-400 rounded-full "></div>
+                {/* <div className="h-16 w-16 bg-green-400 rounded-full "></div> */}
+                <img className="h-16 w-16 rounded-full" src={props.imageURL}/>
             </div>
 
     
@@ -110,7 +153,23 @@ export function OrderCard(props){
                         <h1>{props.name}</h1>
                         <h1>{props.price}</h1>
                     </div>
-                <TrashIcon className=" absolute right-4 h-6 w-6 text-gray-400 hover:text-red-700"/>
+                <TrashIcon className=" absolute right-4 h-6 w-6 text-gray-400 hover:text-red-700"
+                    // onClick={()=>{
+                    //     console.log(props.id)
+                    //     for (var s = 0; s < state.cartList.length; s++){
+                    //         if(state.cartList[s].id === props.id){
+                    //             state.cartList.remove(s)
+                    //         }
+                    //     }
+                    // }}
+
+                    onClick={()=> {setState((pv)=>({
+                        ...pv,
+                        cartList:[...newCart]
+                        
+                    }))}}
+                
+                />
                 </div>
 
             </div>
@@ -118,4 +177,12 @@ export function OrderCard(props){
     </div>
 
     )
+}
+
+export function findTotal(arr){
+    var total = 0
+    for (var t= 0; t < arr.length; t++){
+        total += arr[t].num *  arr[t].price
+    }
+    return total
 }

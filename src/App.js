@@ -2,7 +2,7 @@ import {useState, createContext} from 'react';
 import { Switch, Route } from 'react-router-dom'
 
 import InitialScreen from './Screens/InitialScreen'
-import AddCart from './Screens/AddCart'
+import AddCart from './AddCart'
 import OrderScreen from './Screens/OrderScreen'
 
 export const DataState = createContext()
@@ -14,6 +14,7 @@ function App(){
     price:"",
     caloriesGrs: "",
     caloriesKal: "",
+    imageURL:"",
     // cartNumber: 0,
     cartList: []
   })
