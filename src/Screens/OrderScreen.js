@@ -69,7 +69,7 @@ import { DataState } from "../App"
 
 
     return(
-        <div className=" h-screen bg-light-grey">
+        <div className=" relative h-screen bg-light-grey">
             <div className="bg-green-400 h-auto">
                 <Link to="/">
                     <ChevronLeftIcon className="absolute left-4 top-6 h-6 w-6 "/>
@@ -104,7 +104,7 @@ import { DataState } from "../App"
 
 
             {/* The Pay Part */}
-            <div className="absolute  bottom-0 h-72 bg-white rounded-t-3xl py-4 mx-auto w-full">
+            <div className="absolute bottom-0 h-72 bg-white rounded-t-3xl py-4 mx-auto w-full">
                 <div className="">
 
 

@@ -148,7 +148,6 @@ function InitialScreen(){
             <Tab.Panel>
               <TacoPage/>
             </Tab.Panel>
-
           </Tab.Panels>
         </div>
     </Tab.Group>
