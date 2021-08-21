@@ -104,7 +104,7 @@ import { DataState } from "../App"
 
 
             {/* The Pay Part */}
-            <div className="absolute inset-x-0 bottom-0 h-72 bg-white rounded-t-3xl py-4 mx-auto">
+            <div className="absolute  bottom-0 h-72 bg-white rounded-t-3xl py-4 mx-auto w-full">
                 <div className="">
 
 
