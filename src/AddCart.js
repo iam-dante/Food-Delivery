@@ -5,7 +5,22 @@ import { DataState } from "./App"
 
 export default function AddCart(){
 
-    var Toppings=  ["Cheese", "Meat", "Bacon", "Pili"]
+
+    var Toppings=  [
+        {
+            name: "Cheese",
+            imageURL: require("./iconImage/cheese.jpg").default
+        },
+        {
+            name: "Meat",
+            imageURL: require("./iconImage/meat.jpeg").default
+        },
+        {
+            name: "Bacon",
+            imageURL: require("./iconImage/bacon.png").default
+        }
+    ]
+
 
     var {state, setState} = useContext(DataState)
     var [numState, numsetState] = useState(1)
@@ -75,7 +90,8 @@ export default function AddCart(){
                         return(
                         <div key={ix}>
                         <div className=" relative h-36 w-28 bg-light-grey rounded-md filter drop-shadow-md flex justify-center ">
-                            <h1 className=" absolute bottom-2 text-sm">{vl}</h1>
+                            <img alt = "" src={vl.imageURL} className="absolute h-16 w-16 bottom-6" />
+                            <h1 className=" absolute bottom-2 text-sm">{vl.name}</h1>
                         </div>
                         </div>
                         )
