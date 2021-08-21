@@ -139,7 +139,7 @@ export function OrderCard(props){
             {/* Pizza Picture */}
             <div className="w-36 flex justify-center items-center ">
                 {/* <div className="h-16 w-16 bg-green-400 rounded-full "></div> */}
-                <img className="h-16 w-16 rounded-full" src={props.imageURL}/>
+                <img className="h-16 w-16 rounded-full" src={props.imageURL} alt=""/>
             </div>
 
     

@@ -97,7 +97,7 @@ export default function AddCart(){
                                         cartList:[...pv.cartList, {name: pv.name, caloriesGrs: pv.caloriesGrs,
                                             caloriesKal: pv.aloriesKal,
                                             id: pv.id,
-                                            name: pv.name,
+                                            // name: pv.name,
                                             price: pv.price,
                                             time: pv.time,
                                             imageURL: pv.imageURL

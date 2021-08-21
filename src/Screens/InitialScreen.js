@@ -119,7 +119,7 @@ function InitialScreen(){
                 <Tab  className=" relative h-24 w-20 bg-gray-100 mx-2 rounded-md filter drop-shadow-lg flex justify-center">
                   {/* <div className=" absolute h-12 w-12 bg-green-500 bottom-6"></div> */}
 
-                  <img src={vl.imageURL} className="absolute  h-12 w-12  bottom-6"/>
+                  <img src={vl.imageURL} className="absolute  h-12 w-12  bottom-6" alt=""/>
                   <h1 className=" absolute   bottom-2 text-sm  ">{vl.name}</h1>
                 </Tab> </div>)
               })
@@ -139,7 +139,9 @@ function InitialScreen(){
               <AllPage/>
             </Tab.Panel>
 
-            <Tab.Panel>Content 2</Tab.Panel>
+            <Tab.Panel>
+            <AllPage/>
+            </Tab.Panel>
             <Tab.Panel>Content 3</Tab.Panel>
 
 
