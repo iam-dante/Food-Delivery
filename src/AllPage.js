@@ -1,18 +1,9 @@
 import {Card} from "./Components"
 
 
-var allList = [
-    {
-        id:0,
-        name: "Magarita",
-        price: 25,
-        imageURL: require("./images/magarita.jpeg").default,
-        time: 345,
-        caloriesGrs: 234,
-        caloriesKal: 30090,
 
-    },
 
+var burgerList =[
     {
         id:1,
         name: "Burrito Chees",
@@ -22,8 +13,10 @@ var allList = [
         caloriesGrs: 634,
         caloriesKal: 34390,
 
-    },
+    }
+]
 
+var tacoList =[
     {
         id:2,
         name: "Taco",
@@ -34,7 +27,6 @@ var allList = [
         caloriesKal: 40930,
 
     },
-
     {
         id:3,
         name: "Banana Cheese",
@@ -44,9 +36,24 @@ var allList = [
         caloriesGrs: 334,
         caloriesKal: 40930,
 
-    },
-
+    }
 ]
+
+var pizzaList =[
+    {
+        id:0,
+        name: "Magarita",
+        price: 25,
+        imageURL: require("./images/magarita.jpeg").default,
+        time: 345,
+        caloriesGrs: 234,
+        caloriesKal: 30090,
+
+    }
+]
+
+
+var allList = [...pizzaList, ...tacoList, ...burgerList]
 
 export function AllPage(){
     return(
@@ -55,6 +62,73 @@ export function AllPage(){
         {
 
             allList.map((vl, ix) => {
+                return (
+
+                    <Card key={ix}  name={vl.name} price={vl.price} time={vl.time}  caloriesGrs={vl.caloriesGrs} caloriesKal={vl.caloriesKal} id={vl.id} imageURL={vl.imageURL}/>
+                )
+
+            })
+
+        }
+            
+           
+    </>
+    )
+}
+
+export function PizzaPage(){
+    return(
+      <>    
+
+        {
+
+            pizzaList.map((vl, ix) => {
+                return (
+
+                    <Card key={ix}  name={vl.name} price={vl.price} time={vl.time}  caloriesGrs={vl.caloriesGrs} caloriesKal={vl.caloriesKal} id={vl.id} imageURL={vl.imageURL}/>
+                )
+
+            })
+
+        }
+            
+           
+    </>
+    )
+}
+
+
+
+export function BurgerPage(){
+    return(
+      <>    
+
+        {
+
+            burgerList.map((vl, ix) => {
+                return (
+
+                    <Card key={ix}  name={vl.name} price={vl.price} time={vl.time}  caloriesGrs={vl.caloriesGrs} caloriesKal={vl.caloriesKal} id={vl.id} imageURL={vl.imageURL}/>
+                )
+
+            })
+
+        }
+            
+           
+    </>
+    )
+}
+
+
+
+export function TacoPage(){
+    return(
+      <>    
+
+        {
+
+            tacoList.map((vl, ix) => {
                 return (
 
                     <Card key={ix}  name={vl.name} price={vl.price} time={vl.time}  caloriesGrs={vl.caloriesGrs} caloriesKal={vl.caloriesKal} id={vl.id} imageURL={vl.imageURL}/>

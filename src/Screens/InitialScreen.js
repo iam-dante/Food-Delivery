@@ -5,7 +5,7 @@ import { DataState } from '../App'
 import { findTotal } from '../Components'
 
 import { MenuAlt1Icon, ShoppingBagIcon } from '@heroicons/react/outline'
-import { AllPage } from '../AllPage'
+import { AllPage, PizzaPage, TacoPage, BurgerPage } from '../AllPage'
 
 function InitialScreen(){
 
@@ -140,10 +140,14 @@ function InitialScreen(){
             </Tab.Panel>
 
             <Tab.Panel>
-            <AllPage/>
+              <PizzaPage/>
             </Tab.Panel>
-            <Tab.Panel>Content 3</Tab.Panel>
-
+            <Tab.Panel>
+              <BurgerPage/>
+            </Tab.Panel>
+            <Tab.Panel>
+              <TacoPage/>
+            </Tab.Panel>
 
           </Tab.Panels>
         </div>
@@ -154,9 +158,9 @@ function InitialScreen(){
 
       state.cartList.length ? 
     
-      (<Link to="/myorder">
+      (<Link to="/myorder" className="relative flex justify-center">
         {/* Cart View */}
-        <div className="absolute inset-x-1/4 bottom-2 h-14 w-52 bg-dark-blue rounded-full flex items-center flex-row">
+        <div className="absolute  bottom-2 h-14 w-52 bg-dark-blue rounded-full flex items-center flex-row">
           <div className=" flex flex-row ml-6 space-x-3"> 
           <ShoppingBagIcon className="h-6 w-6 text-white"/>
           <h1 className="text-white">{state.cartList.length} items</h1>
