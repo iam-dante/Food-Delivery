@@ -9,7 +9,7 @@ export default function AddCart(){
     var Toppings=  [
         {
             name: "Cheese",
-            imageURL: require("./iconImage/cheese.jpg").default
+            imageURL: require("./iconImage/cheese.jpeg").default
         },
         {
             name: "Meat",
@@ -17,7 +17,7 @@ export default function AddCart(){
         },
         {
             name: "Bacon",
-            imageURL: require("./iconImage/bacon.png").default
+            imageURL: require("./iconImage/bacon.jpeg").default
         }
     ]
 

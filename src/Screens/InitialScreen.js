@@ -14,15 +14,15 @@ function InitialScreen(){
   var list =[
     {
       name:"All",
-      imageURL: require("../iconImage/allfood.jpeg").default
+      imageURL: require("../iconImage/allfood.jpg").default
     },
     {
       name:"Pizza",
-      imageURL: require("../iconImage/pizza.png").default
+      imageURL: require("../iconImage/pizza.jpg").default
     },
     {
       name:"Burger",
-      imageURL: require("../iconImage/burgericon.jpeg").default
+      imageURL: require("../iconImage/burgericon.jpg").default
     },
     {
       name:"Taco",
@@ -85,7 +85,7 @@ function InitialScreen(){
 
 
   // Calculating the total amount used
-  var total = findTotal(newList)
+  const total = findTotal(newList)
 
 
   return(
@@ -114,13 +114,14 @@ function InitialScreen(){
             {
               list.map((vl, ix)=>{
 
+                // relative h-24 w-20 bg-gray-100 mx-2 rounded-md filter drop-shadow-lg flex justify-center
                 return(
                 <div key={ix}>
-                <Tab  className=" relative h-24 w-20 bg-gray-100 mx-2 rounded-md filter drop-shadow-lg flex justify-center">
+                <Tab  className= {({selected}) => selected ? "relative h-24 w-20 bg-gray-100 mx-2 rounded-md filter drop-shadow-lg flex justify-center": "relative h-24 w-20 bg-light-grey mx-2 rounded-md flex justify-center"}>
                   {/* <div className=" absolute h-12 w-12 bg-green-500 bottom-6"></div> */}
 
                   <img src={vl.imageURL} className="absolute  h-12 w-12  bottom-6" alt=""/>
-                  <h1 className=" absolute   bottom-2 text-sm  ">{vl.name}</h1>
+                  <h1 className=" absolute   bottom-1 text-sm  ">{vl.name}</h1>
                 </Tab> </div>)
               })
 
